@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="blog.dao.VisitorDao">
+
+    <!--查询是否存在某个uuid-->
+    <select id="hasUUID" resultType="java.lang.Integer">
+        select ifnull((select 1 from visitor where uuid=#{uuid} limit 1), 0)
+    </select>
+
+    <!--通过uuid找到访客-->
+    <select id="selectByUuid" resultType="visitor">
+        select id, uuid, ip, ip_source, os, browser, create_time, last_time, pv,user_agent
+        from visitor  where uuid=#{uuid}
+    </select>
+
+    <select id="getPv" resultType="java.lang.Integer">
+        select COALESCE(sum(pv),0) from visitor
+    </select>
+
+</mapper>

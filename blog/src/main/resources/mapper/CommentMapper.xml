@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="blog.dao.CommentDao">
+
+    <select id="getPageCommentListByPageAndParentCommentIdByDesc" resultType="blog.common.vo.PageComment">
+        select id, nickname, content, website,avatar, create_time, is_admin_comment,parent_comment_nickname
+        from comment where blog_id=#{blogId} and parent_comment_id=#{parentCommentId} order by create_time desc
+    </select>
+    <select id="getPageCommentListByPageAndParentCommentId" resultType="blog.common.vo.PageComment">
+        select id, nickname, content, website,avatar, create_time, is_admin_comment,parent_comment_nickname
+        from comment where blog_id=#{blogId} and parent_comment_id=#{parentCommentId} order by create_time
+    </select>
+
+
+</mapper>

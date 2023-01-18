@@ -1,0 +1,27 @@
+spring:
+  #druid数据库连接池
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.17.0.2:3306/blog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: YIQU
+    password: LSL!20010418
+
+  #redis 连接
+  redis:
+    host: 172.17.0.3
+    timeout: 5000
+    password: LSL!20010418
+    connect-timeout: 30
+
+    lettuce:
+      pool:
+        max-idle: 30
+        max-active: 8
+        max-wait: 10000
+        min-idle: 10
+
+  #elasticsearch 搜索引擎
+  elasticsearch:
+    uris: 175.178.212.107:9200
+    connection-timeout: 30s
